@@ -1,0 +1,30 @@
+<script type="text/javascript" src="api.js"></script>
+<script type="text/javascript">
+chrome.omnibox.onInputStarted.addListener (
+	function() {
+		install();
+		chrome.tabs.getSelected(null, function(currentTab) {
+			tabID = currentTab.id;
+		});
+		chrome.omnibox.setDefaultSuggestion({description: getDefaultSuggestion("")});
+	}
+);
+
+chrome.omnibox.onInputChanged.addListener (
+	function(text, suggest) {
+		chrome.omnibox.setDefaultSuggestion({description: getDefaultSuggestion(text)});
+		suggest(generateSuggestions(text));
+	}
+);
+
+chrome.omnibox.onInputEntered.addListener (
+	function(text) {
+		var url = execute(text);
+		if (url) {
+			chrome.tabs.update(tabID, {
+				url: url
+			});
+		}
+	}
+);
+</script>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Shortcut settings</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link type="text/css" rel="stylesheet" href="styles.css"/>
+		<script type="text/javascript" src="api.js"></script>
+		<script type="text/javascript" src="form_api.js"></script>
+	</head>
+	<body onload="initForm()">
+		<div class="wrapper">
+			<h2>Shortcut Settings</h2>
+			<form onsubmit="settingsSubmit()" action="">
+				<div class="messages">Settings are automatically saved as you type - just leave the page when you are done.</div>
+				<fieldset>
+					<legend>Notifications</legend>
+					<input id="overwrite_confirm" type="checkbox" class="cleft" onchange="toggleOverwrite()"/>
+					<label for="overwrite_confirm" class="left">Confirm before overwriting shortcuts</label>
+					<input id="notifications" type="checkbox" class="cleft" onchange="toggleNotifications()"/>
+					<label for="notifications" class="left">Enable Desktop Notifications</label>
+					<div class="sub_settings group">
+						<label for="notification_timeout" class="cleft" style="margin-left: 8px;">Notification Display Length</label>
+						<div id="notification_timeout_wrapper" class="glow_div">
+							<input id="notification_timeout" type="text" class="left thin_text poll" onblur="blurNotificationTimeout()"
+								   onfocus="setNotificationTimeout()" onkeyup="setNotificationTimeout()"/>
+							<div style="clear: left;"></div>
+						</div>
+						<label for="notification_timeout" class="left">seconds</label>
+						<input id="notifications_add" type="checkbox" class="cleft" onchange="toggleAddNotification()"/>
+						<label for="notifications_add" class="left">Notify me when a shortcut is successfully added</label>
+						<input id="notifications_remove" type="checkbox" class="cleft" onchange="toggleRemoveNotification()"/>
+						<label for="notifications_remove" class="left">Notify my when a shortcut is successfully removed</label>
+						<input id="notifications_overwrite" type="checkbox" class="cleft" onchange="toggleOverwriteNotification()"/>
+						<label for="notifications_overwrite" class="left">Notify me when a shortcut is successfully overwritten</label>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>Default / Unknown Shortcut Action</legend>
+					<input id="default_nothing" name="default_destination" type="radio" value="default_nothing" class="cleft" onchange="changeDefaultResult()"/>
+					<label for="default_nothing" class="left">Do Nothing</label>
+					<input id="default_settings" name="default_destination" type="radio" value="default_settings" class="cleft" onchange="changeDefaultResult()"/>
+					<label for="default_settings" class="left">Load this settings page</label>
+					<input id="default_custom" name="default_destination" type="radio" value="default_custom" class="cleft" onchange="changeDefaultResult()"/>
+					<label for="default_custom" class="left">Go to this address:</label>
+					<div id="custom_url_wrapper" class="glow_div">
+						<input id="default_custom_url" name="default_destination_address" type="text" class="left wide_text" onblur="blurCustomDefaultResult()"
+							   onfocus="setCustomDefaultResult()" onkeyup="setCustomDefaultResult()"/>
+						<div style="clear: left"></div>
+					</div>
+					<label for="default_custom_url" class="left green" id="default_custom_url_error">You may specify the address bar contents by typing %s.</label>
+				</fieldset>
+				<fieldset style="position: relative;">
+					<legend>Manage Shortcuts</legend>
+					<select id="shortcuts" multiple="multiple" size="12" class="select cleft" onchange="updateSelectedLink()">
+						<option></option>
+					</select>
+					<div class="left">
+						<fieldset class="left group" style="position: relative; width: 500px;">
+							<legend>Add Shortcut</legend>
+							<div class="left">
+								<label for="newShortcut" class="left" style="margin: 0px 6px;">Shortcut</label>
+								<div id="new_shortcut_wrapper" class="glow_div cleft">
+									<input id="newShortcut" type="text" class="cleft add_text" style="width: 125px;"
+										   onblur="blurNewShortcut()" onfocus="validateShortcut()" onkeyup="validateShortcut()"/>
+									<div style="clear: left;"></div>
+								</div>
+							</div>
+							<div class="left">
+								<label for="newLink" class="left" style="margin: 0px 6px">Link</label>
+								<div id="new_link_wrapper" class="glow_div cleft">
+									<input id="newLink" type="text" class="left wide_text add_text" onblur="blurNewShortcut()"
+										   onfocus="validateShortcut()" onkeyup="validateShortcut()" onkeydown="submitShortcut(event)"/>
+									<div style="clear: left;"></div>
+								</div>
+							</div>
+							<input id="saveNewShortcut" type="button" value="Add Shortcut" class="left add_text"
+								   style="position: absolute; bottom: 8px; right: 10px;" onclick="processAdd()"/>
+						</fieldset>
+						<span class="cleft red invisible transition" id="blank_error" style="padding: 5px; width: 500px">
+							Shortcuts and links cannot be blank.
+						</span>
+						<span class="cleft red invisible transition" id="underscore_error" style="padding: 5px; width: 500px">
+							Shortcuts may not begin with "__" (two underscores).
+						</span>
+					</div>
+					<div class="line_group">
+						<div id="selected_link_wrapper" class="left transition">
+							<input id="selectedLink" type="text" class="cleft wide_text" style="margin-top: 0px;" onblur="blurUpdate()"
+								   onfocus="processUpdate()" onkeyup="processUpdate()"/>
+						</div>
+						<input id="clearSelected" type="button" value="Remove" class="left" onclick="processRemove()" disabled/>
+					</div>
+					<div class="controls">
+						<div class="reset left">
+							<input id="clearAll" type="button" value="Reset Extension" onclick="nukeShortcuts()"/>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,180 @@
+body {
+	font-family: sans-serif;
+	margin: 0px;
+}
+
+fieldset {
+	border: 1px solid #333;
+	box-shadow: 5px 5px 5px #666;
+	margin-bottom: 1em;
+}
+
+form {
+	background-color: #FFF;
+	border: 3px solid #000;
+	border-radius: 10px;
+	margin: 0em auto;
+	opacity: 0.85;
+	padding: 10px;
+	width: 850px;
+}
+
+h2 {
+	margin: 0px auto;
+	padding: 10px;
+	padding-bottom: .5em;
+	text-align: right;
+	width: 850px;
+}
+
+input {
+	margin: 6px 10px;
+	outline: none;
+}
+
+label {
+	margin: 3px 0px;
+}
+
+legend {
+	font-weight: bold;
+}
+
+.add_text {
+	margin: 0px;
+}
+
+.cleft {
+	clear: left;
+	float: left;
+}
+
+.controls {
+	position: absolute;
+	bottom: 10px;
+	right: 20px;
+}
+
+.error {
+	border: 1px solid #F00;
+	color: #F00;
+	box-shadow: 0px 0px 5px #F00;
+}
+
+.export {
+	border: 2px dashed #009933;
+	margin-right: 1em;
+}
+
+.form_right {
+	clear: right;
+	float: right;
+	margin: 5px 10px;
+	padding: 5px;
+}
+
+.glow_div {
+	float: left;
+	margin: 3px 6px;
+	-webkit-transition: all 0.5s ease-in;
+}
+
+.good {
+	color: green;
+	display: block;
+}
+
+.green {
+	color: green;
+}
+
+.group {
+	border: 1px dashed #AAA;
+	box-shadow: none;
+	float: left;
+	padding: 5px;
+}
+
+.invalid {
+	box-shadow: 0 0 8px #FF0000;
+}
+
+.invisible {
+	opacity: 0;
+}
+
+.line_group {
+	clear: left;
+	float: left;
+	margin-left: 10px;
+}
+
+.line_group input {
+	margin-right: 0px;
+	margin-top: 0px;
+}
+
+.left {
+	float: left;
+}
+
+.messages {
+	background-color: #FFFF99;
+	border: 1px solid #CCCCAA;
+	border-radius: 4px;
+	margin-bottom: 1em;
+	padding: 5px;
+	text-align: center;
+}
+
+.red {
+	color: red;
+}
+
+.reset {
+	border: 2px dashed #FFAA44;
+}
+
+.select {
+	margin: 0px 10px;
+	margin-bottom: 5px;
+	outline: none;
+	width: 250px;
+}
+
+.sub_settings {
+	clear: left;
+	margin-left: 2em;
+}
+
+.text {
+	margin: 3px 5px;
+}
+
+.thin_text {
+	margin: 0px;
+	width: 50px;
+}
+
+.transition {
+	-webkit-transition: all 0.5s ease-in;
+}
+
+.valid {
+	box-shadow: 0 0 8px #009933;
+}
+
+.wide_text {
+	margin: 0px;
+	width: 250px;
+}
+
+.wrapper {
+	background: url('600.png') no-repeat;
+	background-position: -100 -50;
+	border-left: 1px solid #333;
+	border-right: 1px solid #333;
+	margin: 0px auto;
+	min-height: 100%;
+	width: 1050px;
+}
